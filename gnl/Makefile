@@ -9,6 +9,9 @@ RM		= rm -f
 
 all:		$(NAME)
 
+bonus:		$(OBJS)
+			ar -rc $@ $(OBJS) 
+
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $<
 
@@ -22,7 +25,7 @@ main:		$(NAME)
 
 #QUITAR 
 D_main:		$(NAME)
-			$(CC) $(CFLAGS) -c get_next_line.c $<
+			$(CC) $(CFLAGS) -D BUFFER_SIZE=10 main.c $<
 #QUITAR
 
 all:		$(NAME)
@@ -32,7 +35,6 @@ clean:
 			
 fclean:		clean
 			$(RM) $(NAME)
-			$(RM) a.out
 
 re:			fclean all
 

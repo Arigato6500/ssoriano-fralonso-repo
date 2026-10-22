@@ -6,7 +6,7 @@
 /*   By: ssoriano <ssoriano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 14:45:02 by ssoriano          #+#    #+#             */
-/*   Updated: 2026/10/20 19:24:50 by ssoriano         ###   ########.fr       */
+/*   Updated: 2026/10/22 17:44:13 by ssoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*joined;
 	char	*aux;
+	char	*temp;
 	int		lens;
 
 	if (!s1 || !s2)
@@ -45,8 +46,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!joined)
 		return (free(s1), NULL);
 	aux = joined;
-	while (*s1)
-		*aux++ = *s1++;
+	temp = s1;
+	while (*temp)
+		*aux++ = *temp++;
 	while (*s2)
 		*aux++ = *s2++;
 	*aux = '\0';

@@ -6,7 +6,7 @@
 /*   By: ssoriano <ssoriano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 14:43:32 by ssoriano          #+#    #+#             */
-/*   Updated: 2026/10/20 16:15:36 by ssoriano         ###   ########.fr       */
+/*   Updated: 2026/10/22 15:57:16 by ssoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		file = open(argv[1], O_RDONLY);
 		string = "";
 		i = 0;
-		while (string)
+		while (i < 10)
 		{
 			string = get_next_line(file);
 			printf("%s.\n", string);
