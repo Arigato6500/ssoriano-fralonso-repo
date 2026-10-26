@@ -6,7 +6,7 @@
 /*   By: ssoriano <ssoriano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:44:20 by ssoriano          #+#    #+#             */
-/*   Updated: 2026/10/20 15:26:13 by ssoriano         ###   ########.fr       */
+/*   Updated: 2026/10/26 18:42:56 by ssoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,70 +22,79 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-ssize_t	ft_putnbr(ssize_t nb, int counter, int fd)
+int	ft_sdecimal(int nb, int fd)
 {
-	int		i;
-	char	cnb;
+	long int	i;
+	char		c;
+	int			a;
 
-	i = 0;
-	if (nb < 0)
+	a = 0;
+	i = (long int)nb;
+	if (i < 0)
 	{
-		nb *= -1;
+		a++;
+		i *= -1;
 		write(fd, "-", 1);
 	}
-	if (nb >= 10)
-		ft_putnbr(nb / 10, counter++, fd);
-	cnb = (nb % 10) - '0';
-	write(fd, &cnb, 1);
-	return (counter);
+	if (i >= 10)
+		a += ft_sdecimal(i / 10, fd);
+	c = (i % 10) + '0';
+	write(fd, &c, 1);
+	a++;
+	return (a);
 }
 
-size_t	ft_sputnbr(size_t nb, int counter, int fd)
+int	ft_udecimal(int nb, int fd)
 {
-	int		i;
-	char	cnb;
+	unsigned long	i;
+	char			c;
+	int				a;
 
-	i = 0;
-	if (nb >= 10)
-		ft_putnbr(nb / 10, counter++, fd);
-	cnb = (nb % 10) - '0';
-	write(fd, &cnb, 1);
-	return (counter);
+	a = 0;
+	i = (long int)nb;
+	if (i >= 10)
+		a += ft_udecimal(i / 10, fd);
+	c = (i % 10) + '0';
+	write(fd, &c, 1);
+	a++;
+	return (a);
 }
 
-int	ft_hexadecimals(unsigned long number, char is_uppercase)
+int	ft_hexadecimals(unsigned int number, char is_uppercase)
 {
+	unsigned long long n;
 	char	*hexadecimal;
-	int 	aux;
-	int		len;
+	int		a;
 
-	len = 0;
 	if (is_uppercase == 'X')
 		hexadecimal = "0123456789ABCDEF";
-	else 
+	else
 		hexadecimal = "0123456789abcdef";
-	if (number > 15)
+	a = 0;
+	n = (unsigned long long)number;
+	if (n > 15)
 	{
-		aux = ft_hexadecimals(number / 16, is_uppercase);
-		if (aux == -1)
+		a += ft_hexadecimals(n / 16, is_uppercase);
+		if (a == -1)
 			return (-1);
-		len += aux;
 	}
-	if (write(1, &hexadecimal[number % 16], 1) == -1)
+	if (write(1, &hexadecimal[n % 16], 1) == -1)
 		return (-1);
-	len++;
-	return (len);
+	a++;
+	return (a);
 }
 
 int	ft_print_memory(void *addr)
 {
 	unsigned long	i;
-	int				flag;
+	size_t			flag;
 	int				num;
 
 	i = (sizeof(unsigned long) * 2);
-	write(1, "0x", 2);
 	flag = 0;
+	if (!addr)
+		return (write(1, "(nil)", 5), 5);
+	write(1, "0x", 2);
 	while (i-- > 0)
 	{
 		num = (((unsigned long)addr >> (i * 4)) & 0xF);
