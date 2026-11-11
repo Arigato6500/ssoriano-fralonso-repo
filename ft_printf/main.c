@@ -15,8 +15,8 @@
 
 int main(void)
 {
-	// size_t ftval = 0;
-    // size_t prval = 0;
+	size_t ftval = 0;
+    size_t prval = 0;
     // char *lista = NULL;
 
 	ft_printf("");
@@ -71,10 +71,9 @@ int main(void)
 	// printf("ft_printf flag i: %zu | printf flag i: %zu\n\n", ftval, prval);
 
 	// // |----------| FLAG %u sin signo |----------|
-	// ftval = ft_printf("%u\n", 16165154);
-	// prval = printf("%u\n", 16165154);
+	// ftval = ft_printf("%u\n", -2);
+	// prval = printf("%u\n", -2);
 	// printf("ft_printf flag u: %zu | printf flag u: %zu\n\n", ftval, prval);
-		
 
 // 	// |----------| FLAG %x / %X hexadecimal |----------|
 // 	ftval = ft_printf("\n %x %x %x %x %x %x %x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, 

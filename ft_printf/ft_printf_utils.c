@@ -44,9 +44,9 @@ int	ft_sdecimal(int nb, int fd)
 	return (a);
 }
 
-int	ft_udecimal(int nb, int fd)
+int	ft_udecimal(unsigned int nb, int fd)
 {
-	unsigned long	i;
+	unsigned long		i;
 	char			c;
 	int				a;
 

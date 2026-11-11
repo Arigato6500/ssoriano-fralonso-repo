@@ -1,7 +1,7 @@
 NAME	= libftprintf.a
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address 
 SRCS	= $(wildcard *.c)
 OBJS	= $(SRCS:.c=.o)
 RM		= rm -f 

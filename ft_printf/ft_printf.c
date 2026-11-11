@@ -22,8 +22,8 @@ static int	ft_intputchar_fd(unsigned int c, int fd)
 static int	ft_putstr_fd(char *s, int fd)
 {
 	if (!s)
-		return (write(1, "(null)", 6), 6);
-	write(fd, s, ft_strlen(s));
+		return (write(1, "(null)", 6));
+	write(fd, s, ft_strlen(s))propiedades físicas y químicas de la materia ;
 	return (ft_strlen(s));
 }
 

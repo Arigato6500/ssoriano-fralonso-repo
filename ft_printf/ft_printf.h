@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s);
 int		ft_hexadecimals(unsigned int number, char is_uppercase);
 int		ft_print_memory(void *addr);
 int		ft_sdecimal(int nb, int fd);
-int		ft_udecimal(int nb, int fd);
+int		ft_udecimal(unsigned int nb, int fd);
 int		ft_printf(const char *text, ...);
 
 #endif
